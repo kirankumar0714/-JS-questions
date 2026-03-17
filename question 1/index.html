@@ -12,30 +12,38 @@
         <label for="">Enter a sentence : </label>
         <input type="text" id="textContainer">
         <div id="errorDiv">Error :</div>
-        <button>Find Words</button>
+        <button id="checkButton">Find Words</button>
         <div id="resultDiv">Result :</div>
     </div>
     <script>
         const inputValue = document.getElementById("textContainer");
         const errorEvent = document.getElementById("errorDiv");
         const resultEvent = document.getElementById("resultDiv");
+        const checkBtn = document.getElementById("checkButton");
     
-        inputValue.addEventListener("keyup", function sentence() {
+        const text = inputValue.value;
+
+        checkBtn.addEventListener("click", function() {
             errorEvent.innerHTML = "";
             resultEvent.innerHTML = "";
-                const text = inputValue.value;
-            if (text.trim() === "") {
-                errorEvent.innerHTML = "Please enter something";
-                return;
+            console.log("hello")
+            const text = inputValue.value;
+            const result = strLength(text);
+            if (result) {
+                resultEvent.textContent = `Smallest word: "${result.smallest}" , Largest word: "${result.largest}" `;
             }
-            const words = text.split(" ").filter(word => word.length > 0);
-
+        });
+        function strLength(str) {
+            const words = str.trim().split(/\s+/).filter(word => word.length > 0);
+            console.log('words:', words);
             if (words.length === 0) {
                 errorEvent.innerHTML = "Please enter something";
-                return;
+                return null; 
             }
+
             let smallest = words[0];
             let largest = words[0];
+
             for (let i = 0; i < words.length; i++) {
                 if (words[i].length < smallest.length) {
                     smallest = words[i];
@@ -44,9 +52,8 @@
                     largest = words[i];
                 }
             }
-            resultEvent.innerHTML = `Smallest: ${smallest}   Largest: ${largest}`;
+            return { smallest, largest };
         }
-    );
     </script>
 </body>
 

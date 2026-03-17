@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheckBox Manager</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <label for="">Select a Option : </label>
+        <input type="checkbox" class="valueDiv">
+        <label for="">Option 1</label>
+        <input type="checkbox" class="valueDiv">
+        <label for="">Option 2</label>
+        <input type="checkbox" class="valueDiv">
+        <label for="">Option 3</label>
+        <input type="checkbox" class="valueDiv">
+        <label for="">Option 4</label>
+        <input type="checkbox" class="valueDiv">
+        <label for="">Option 5</label>
+
+        <button id="checkedBox" onclick="checkAll()">Check All</button>
+        <button id="uncheckedBox" onclick="checkAll()">Uncheck All</button>
+        <button id="toggleBox">Toggle</button>
+    </div>
+    <script>
+
+        function checkAll() {
+  const checkboxes = document.querySelectorAll(".valueDiv");
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = true;
+  });
+}
+function checkAll() {
+  const checkboxes = document.querySelectorAll(".valueDiv");
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = false; 
+  });
+}
+
+       
+    </script>
+</body>
+
+</html>

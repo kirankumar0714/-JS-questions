@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse A String</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <button id="checkButton" onclick="getUrl()">Find Data</button>
+        <div id="resultDiv">Result :</div>
+    </div>
+    <script>
+        function getUrl() {
+            let urlString = "https://www.mitrahsoft.com/?technology=coldfusion&people=veryNice"
+            const url = new URL(urlString);
+            const name = url.searchParams.get('technology');
+            const people = url.searchParams.get('people');
+            console.log(name);
+            console.log(people);
+            resultDiv.innerHTML = `Technology : ${name}  
+             People : ${people}`
+        }
+    </script>
+</body>
+
+</html>

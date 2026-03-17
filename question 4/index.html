@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse A String</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <label for="">Enter a String : </label>
+        <input type="text" id="textContainer">
+        <div id="errorDiv">Error :</div>
+        <button id="checkButton">Reverse </button>
+        <div id="resultDiv">Result :</div>
+    </div>
+    <script>
+    const textInput = document.getElementById('textContainer');
+    const errorText = document.getElementById('errorDiv');
+    const checkButton = document.getElementById('checkButton');
+    const resultSpan = document.getElementById('resultDiv');
+
+    checkButton.addEventListener('click', function() {
+        resultSpan.textContent="";
+        errorText.textContent="";
+    const inputText = textInput.value;
+    if(inputText ===""){
+        errorText.textContent = "Please enter something"
+    }
+    const reversed = reverseStr(inputText);
+    resultSpan.textContent = reversed;
+});
+function reverseStr(str) {
+  if (str.length < 1) { 
+    return false;
+  }
+  let newString = ""
+  for(let i= str.length-1;i>=0;i--){
+    newString +=str[i]
+      console.log(str[i])
+  }
+  return newString;
+}
+    </script>
+</body>
+
+</html>

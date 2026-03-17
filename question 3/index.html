@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Match</title>
+</head>
+
+<body>
+    <div>
+        <label for="">Enter a String : </label>
+        <input type="text" id="textContainer">
+        <div id="errorDiv">Error :</div>
+        <button id="checkButton">Click</button>
+        <div id="resultDiv">Result :</div>
+    </div>
+    <script>
+        const textInput = document.getElementById('textContainer');
+        const errorText = document.getElementById('errorDiv');
+        const checkButton = document.getElementById('checkButton');
+        const resultSpan = document.getElementById('resultDiv');
+
+        checkButton.addEventListener('click', function () {
+            resultSpan.textContent = "";
+            errorText.textContent = "";
+            const inputText = textInput.value;
+            if (inputText === "") {
+                errorText.textContent = "Please enter something"
+            }
+            const matchedValue = charMatch(inputText);
+            resultSpan.textContent = matchedValue;
+        });
+        function charMatch(str) {
+            if (str.length < 1) {
+                return false;
+            }
+            const firstChar = str[0];
+            const lastChar = str[str.length - 1];
+            if (firstChar === lastChar) {
+                alert("Both The Characters Match !")
+            } else {
+                return "No Match is found"
+            }
+        }
+    </script>
+</body>
+
+</html>

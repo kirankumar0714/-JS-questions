@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count words</title>
+</head>
+
+<body>
+    <div>
+        <label for="">Enter a Sentence :</label>
+        <input type="text" name="" id="textContainer">
+        <div id="errorDiv">Error :</div>
+        <button id="checkBtn">Count Words </button>
+        <div id="resultDiv">Result :</div>
+    </div>
+    <script>
+        const inputvalue = document.getElementById("textContainer");
+        const checkEvent = document.getElementById("checkBtn")
+        const resultEvent = document.getElementById("resultDiv")
+        const errorEvent = document.getElementById("errorDiv")
+
+        checkEvent.addEventListener("click", () => {
+
+            let sentence = inputvalue.value.toLowerCase().trim();
+            console.log('sentence:', sentence)
+
+            if (sentence === "") {
+                errorEvent.textContent = "Please Enter something"
+            }
+            if (/[^a-zA-Z0-9\s]/g.test(sentence)) {
+                errorEvent.textContent = "Not allowed"
+            } else {
+                const result = frequency(sentence);
+                resultEvent.textContent = result;
+            }
+            function frequency(str) {
+                const words = str.split(/\s+/);
+                console.log('words:', words)
+                let count = words.length;
+                console.log(count, "count")
+                return count;
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vowels </title>
+</head>
+
+<body>
+    <div>
+        <label for="">Enter a sentence : </label>
+        <input type="text" id="textContainer">
+        <div id="errorDiv">Error :</div>
+        <button id="checkButton">Find Words</button>
+        <div id="resultDiv">Result :</div>
+    </div>
+    <script>
+    const textInput = document.getElementById('textContainer');
+    const errorText = document.getElementById('errorDiv');
+    const checkButton = document.getElementById('checkButton');
+    const resultSpan = document.getElementById('resultDiv');
+
+    checkButton.addEventListener('click', function() {
+        resultSpan.textContent="";
+        errorText.textContent="";
+    const inputText = textInput.value;
+    if(inputText ===""){
+        errorText.textContent = "Please enter something"
+    }
+    const vowelCount = countVowels(inputText);
+    resultSpan.textContent = `Vowels Count : ${vowelCount}`
+});
+function countVowels(str) {
+   let count = 0;
+    for(let i = 0;i<str.length;i++){
+        let char = str.charAt(i)
+        if("aeiou".includes(char)){
+            count ++;
+        }
+    }
+    console.log("Vowels count : " ,count)
+    return count;
+}
+    </script>
+</body>
+
+</html>

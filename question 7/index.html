@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse A String</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+      <div>
+        <label for="">Enter the Numbers : </label>
+        <input type="text" pattern="[0-9,]*" title="Numbers separated by comma" id="textContainer">
+        <div id="resultDiv">Result :</div>
+        <button class="checkButton">Add</button>
+        <button class="checkButton">Multiply</button>
+    </div>
+    <script>
+    const textInput = document.getElementById('textContainer');
+    const checkButton = document.querySelector('.checkButton');
+    const resultSpan = document.getElementById('resultDiv');
+
+    checkButton.addEventListener('click', function() {
+        resultSpan.textContent="";
+    const inputValue = textInput.value;
+    let numArray = inputValue.split(',').map(Number);
+    if(numArray ===""){ 
+        errorText.textContent = "Please enter something"
+    }
+   const addition = add(...numArray); 
+    resultSpan.textContent = addition;
+
+    const multiplication = multiply(...numArray);
+    resultSpan.textContent = multiplication;
+
+  });
+  function add(arr) {
+      let add = arr.map((acc, cur) => acc + cur, 0);
+      return add;
+}
+
+  function multiply(arr) {
+   return arr.map((acc, cur) => acc * cur, 0);
+}
+
+    </script>
+</body>
+
+</html>

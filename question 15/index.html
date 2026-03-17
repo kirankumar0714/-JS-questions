@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <label for="">Enter a Sentence :</label>
+        <input type="text" name="" id="textContainer">
+        <div id="errorDiv">Error :</div>
+        <button id="checkBtn">Count Words </button>
+        <div id="resultDiv">Result :</div>
+    </div>
+    <script>
+        const inputvalue = document.getElementById("textContainer");
+        const checkEvent = document.getElementById("checkBtn")
+        const resultEvent = document.getElementById("resultDiv")
+        const errorEvent = document.getElementById("errorDiv")
+
+        checkEvent.addEventListener("click", () => {
+
+            let sentence = inputvalue.value.toLowerCase().trim();
+            if (sentence === "") {
+                errorEvent.textContent = "Please Enter something"
+            }
+            if (/[^a-zA-Z0-9\s]/g.test(sentence)) {
+                errorEvent.textContent = "Not allowed"
+            }
+            if(/^\d+$/){
+                errorEvent.textContent = " Numbers Not Allowed"
+            } else {
+                const result = palindrome(sentence);
+                if(result == true){
+                     resultEvent.textContent = "This is a Palindrome";
+                }else(
+                    resultEvent.textContent = "This is not a Palindrome"
+                )
+               
+            }
+        });
+         function palindrome(str) {
+               let reverse = "";
+               for(let i = str.length-1;i>=0;i--){
+                    reverse += str[i];
+               }
+               console.log('reverse:', reverse)
+               if(reverse == str){
+                return true;
+               }
+               else{
+                return  false;
+               }
+            }
+    </script>
+</body>
+
+</html>
