@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <form>
+        <div>
+            <label for="">Enter The Minimum num: </label>
+            <input type="text" id="minContainer">
+            <label for="">Enter The Maximum number: </label>
+            <input type="text" id="maxContainer">
+            <div id="errorDiv">Error :</div>
+            <button id="checkButton">Find</button>
+            <div id="resultDiv">Result :</div>
+        </div>
+    </form>
+    <script>
+        const minInput = document.getElementById('minContainer');
+        const maxInput = document.getElementById('maxContainer');
+        const errorText = document.getElementById('errorDiv');
+        const checkButton = document.getElementById('checkButton');
+        const resultSpan = document.getElementById('resultDiv');
+
+        checkButton.addEventListener('click', function () {
+            resultSpan.textContent = "";
+            errorText.textContent = "";
+            const minVal = minInput.value;
+            const maxVal = maxInput.value;
+            if (minVal && maxVal === "") {
+                errorText.textContent = "Please enter something"
+            }
+            if (!/^[0-9]*$/.test(minVal)) {
+                errorText.textContent = "Only numbers are allowed"
+            }
+            if (!/^[0-9]*$/.test(maxVal)) {
+                errorText.textContent = "Only numbers are allowed"
+            }
+            if(minVal>maxVal){
+                errorText.textContent = "Max Value should be greater tha Min"
+            } else {
+                const random = randomGenerator(minVal, maxVal);
+                resultSpan.textContent = random;
+            }
+        });
+        function randomGenerator(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min
+
+        }
+    </script>
+</body>
+
+</html>

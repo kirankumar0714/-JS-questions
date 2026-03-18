@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password check</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <form id="myForm">
+        <div>
+            <input type="password" id="password">
+            <input type="checkbox" id="toggle">
+            <label>Show Password</label>
+        </div>
+    </form>
+
+    <script>
+        let password = document.getElementById("password");
+        let checkbox = document.getElementById("toggle");
+        checkbox.onclick = function () {
+            if (checkbox.checked) {
+                password.type = "text";
+            } else {
+                password.type = "password";
+            }
+        }
+    </script>
+</body>
+
+</html>

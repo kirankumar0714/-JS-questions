@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <style>
+        #div1 {
+            width: 250px;
+            height: 70px;
+            padding: 10px;
+            border: 1px solid #aaaaaa;
+        }
+    </style>
+    <script>
+        function dragHandler(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function dragoverHandler(ev) {
+            ev.preventDefault();
+        }
+
+        function dropHandler(ev) {
+            ev.preventDefault();
+            const data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+</head>
+
+<body>
+    <div>Drag and Drop :</div>
+
+    <div id="div1" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)"></div>
+    <br>
+    <img id="img1" src="image.jpg" draggable="true" ondragstart="dragHandler(event)" width="200" height="80">
+
+</body>
+
+</html>

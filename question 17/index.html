@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse A String</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <form>
+        <div>
+            <label for="">Enter a sentence : </label>
+            <input type="text" id="textContainer">
+            <div id="errorDiv">Error :</div>
+            <button id="checkButton">Find Words</button>
+            <div id="resultDiv">Result :</div>
+        </div>
+    </form>
+    <script>
+        const textInput = document.getElementById('textContainer');
+        const errorText = document.getElementById('errorDiv');
+        const checkButton = document.getElementById('checkButton');
+        const resultSpan = document.getElementById('resultDiv');
+
+        checkButton.addEventListener('click', function () {
+            resultSpan.textContent = "";
+            errorText.textContent = "";
+            const inputValue = textInput.value;
+            console.log('textInput.value:', textInput.value)
+            if (inputValue === "") {
+                errorText.textContent = "Please enter something"
+            }
+            if (inputValue.length < 2) {
+                errorText.textContent = "length should be more than one"
+            }
+            else {
+                const removed = removeDuplicate(...inputValue);
+                resultSpan.textContent = removed;
+            }
+
+        });
+        function removeDuplicate(...array) {
+            const uniqueArray = array.reduce((accumulator, currentItem) => {
+                if (!accumulator.includes(currentItem)) {
+                    accumulator.push(currentItem);
+                }
+                return accumulator;
+            }, []);
+            let orginalArr = []
+            for (let ele of uniqueArray) {
+                if (ele !== "," && ele !== " ")
+                    orginalArr.push(ele)
+            }
+            return orginalArr;
+        }
+
+    </script>
+</body>
+
+</html>

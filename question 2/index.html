@@ -8,40 +8,38 @@
 </head>
 
 <body>
-    <div>
-        <label for="">Enter a sentence : </label>
-        <input type="text" id="textContainer">
-        <div id="errorDiv">Error :</div>
-        <button id="checkButton">Find Words</button>
-        <div id="resultDiv">Result :</div>
-    </div>
-    <script>
-    const textInput = document.getElementById('textContainer');
-    const errorText = document.getElementById('errorDiv');
-    const checkButton = document.getElementById('checkButton');
-    const resultSpan = document.getElementById('resultDiv');
+    <form action="">
+        <div>
+            <label for="">Enter a sentence : </label>
+            <input type="text" id="textContainer">
+            <div id="errorDiv">Error :</div>
+            <button id="checkButton">Find Words</button>
+            <div id="resultDiv">Result :</div>
+        </div>
+    </form>
 
-    checkButton.addEventListener('click', function() {
-        resultSpan.textContent="";
-        errorText.textContent="";
-    const inputText = textInput.value;
-    if(inputText ===""){
-        errorText.textContent = "Please enter something"
-    }
-    const vowelCount = countVowels(inputText);
-    resultSpan.textContent = `Vowels Count : ${vowelCount}`
-});
-function countVowels(str) {
-   let count = 0;
-    for(let i = 0;i<str.length;i++){
-        let char = str.charAt(i)
-        if("aeiou".includes(char)){
-            count ++;
+    <script>
+        const textInput = document.getElementById('textContainer');
+        const errorText = document.getElementById('errorDiv');
+        const checkButton = document.getElementById('checkButton');
+        const resultSpan = document.getElementById('resultDiv');
+
+        checkButton.addEventListener('click', function () {
+            resultSpan.textContent = "";
+            errorText.textContent = "";
+            const inputText = textInput.value;
+            if (inputText === "") {
+                errorText.textContent = "Please enter something"
+            }
+            const vowelCount = countVowels(inputText);
+            resultSpan.textContent = `Vowels  : ${vowelCount}`
+        });
+        function countVowels(str) {
+            const filtered = str.toLowerCase().split('').filter(char => {
+                return textInput.includes(char);
+            });
+            return filtered;
         }
-    }
-    console.log("Vowels count : " ,count)
-    return count;
-}
     </script>
 </body>
 

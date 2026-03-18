@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reverse A String</title>
+    <title>Find Even Number</title>
     <style>
 
     </style>
@@ -13,14 +13,14 @@
 <body>
     <form>
         <div>
-            <label for="">Enter a String : </label>
+            <label for="">Enter a sentence : </label>
             <input type="text" id="textContainer">
             <div id="errorDiv">Error :</div>
-            <button id="checkButton">Reverse </button>
+            <button id="checkButton">Find Words</button>
             <div id="resultDiv">Result :</div>
         </div>
-    </form>
 
+    </form>
     <script>
         const textInput = document.getElementById('textContainer');
         const errorText = document.getElementById('errorDiv');
@@ -34,18 +34,19 @@
             if (inputText === "") {
                 errorText.textContent = "Please enter something"
             }
-            const reversed = reverseStr(inputText);
-            resultSpan.textContent = reversed;
+            if (!/^[0-9]*$/.test(inputText)) {
+                errorText.textContent = "Only numbers are allowed"
+            } else {
+                const number = evenNumber(inputText);
+                resultSpan.textContent = number;
+            }
         });
-        function reverseStr(str) {
-            if (str.length < 1) {
-                return false;
+        function evenNumber(num) {
+            if (num % 2 == 0) {
+                return "Even Number"
+            } else {
+                return "Odd Number"
             }
-            let newString = ""
-            for (let i = str.length - 1; i >= 0; i--) {
-                newString += str[i]
-            }
-            return newString;
         }
     </script>
 </body>

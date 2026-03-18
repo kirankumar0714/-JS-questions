@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <form id="myForm">
+        <div>
+            <input type="text" placeholder="Name" id="nameEvent">
+            <input type="text" placeholder="Age" id="ageEvent">
+            <button id="addBtn">Add</button>
+            <table id="myTable">
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                </tr>
+            </table>
+        </div>
+    </form>
+
+    <script>
+        const table = document.getElementById('myTable');
+        const addButton = document.getElementById("addBtn")
+        const tbody = table.querySelector('tbody');
+        const form = document.getElementById('myForm');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('nameEvent').value;
+            const ageInput = document.getElementById('ageEvent').value;
+            addRow(nameInput, ageInput);
+        });
+
+        function addRow(itemDescription, itemValue) {
+            const newRow = document.createElement('tr');
+            const cell1 = document.createElement('td');
+            cell1.textContent = itemDescription;
+            const cell2 = document.createElement('td');
+            cell2.textContent = itemValue;
+            newRow.appendChild(cell1);
+            newRow.appendChild(cell2);
+            tbody.appendChild(newRow);
+        }
+
+
+    </script>
+</body>
+
+</html>

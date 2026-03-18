@@ -11,33 +11,36 @@
 </head>
 
 <body>
-    <div>
-        <label for="">Enter The Numbers : </label>
-        <input type="text" pattern="[0-9,]*" title="Numbers separated by comma" id="textContainer">
-        <div id="errorDiv">Error :</div>
-        <button id="checkButton">Click</button>
-        <div id="resultDiv">Result :</div>
-    </div>
-    <script>
-    const textInput = document.getElementById('textContainer');
-    const errorText = document.getElementById('errorDiv');
-    const checkButton = document.getElementById('checkButton');
-    const resultSpan = document.getElementById('resultDiv');
+    <form>
+        <div>
+            <label for="">Enter The Numbers : </label>
+            <input type="text" pattern="[0-9,]*" title="Numbers separated by comma" id="textContainer">
+            <div id="errorDiv">Error :</div>
+            <button id="checkButton">Click</button>
+            <div id="resultDiv">Result :</div>
+        </div>
+    </form>
 
-    checkButton.addEventListener('click', function() {
-        resultSpan.textContent="";
-        errorText.textContent="";
-    const inputValue = textInput.value;
-    let numArray = inputValue.split(',').map(Number);
-    if(numArray ===""){
-        errorText.textContent = "Please enter something"
-    }
-   const maximum = Math.max(...numArray); 
-    resultSpan.textContent = maximum;
-  });
-  function largestNumber(arr) {
-        return Math.max(...arr);
-    }
+    <script>
+        const textInput = document.getElementById('textContainer');
+        const errorText = document.getElementById('errorDiv');
+        const checkButton = document.getElementById('checkButton');
+        const resultSpan = document.getElementById('resultDiv');
+
+        checkButton.addEventListener('click', function () {
+            resultSpan.textContent = "";
+            errorText.textContent = "";
+            const inputValue = textInput.value;
+            let numArray = inputValue.split(',').map(Number);
+            if (numArray === "") {
+                errorText.textContent = "Please enter something"
+            }
+            const maximum = Math.max(...numArray);
+            resultSpan.textContent = maximum;
+        });
+        function largestNumber(arr) {
+            return Math.max(...arr);
+        }
     </script>
 </body>
 

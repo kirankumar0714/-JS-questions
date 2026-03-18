@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reverse A String</title>
+    <title>Character Frequency</title>
     <style>
 
     </style>
@@ -13,14 +13,13 @@
 <body>
     <form>
         <div>
-            <label for="">Enter a String : </label>
+            <label for="">Enter a sentence : </label>
             <input type="text" id="textContainer">
             <div id="errorDiv">Error :</div>
-            <button id="checkButton">Reverse </button>
+            <button id="checkButton">Find Words</button>
             <div id="resultDiv">Result :</div>
         </div>
     </form>
-
     <script>
         const textInput = document.getElementById('textContainer');
         const errorText = document.getElementById('errorDiv');
@@ -30,23 +29,24 @@
         checkButton.addEventListener('click', function () {
             resultSpan.textContent = "";
             errorText.textContent = "";
-            const inputText = textInput.value;
-            if (inputText === "") {
+            const inputValue = textInput.value;
+            console.log('textInput.value:', textInput.value)
+            if (inputValue === "") {
                 errorText.textContent = "Please enter something"
             }
-            const reversed = reverseStr(inputText);
-            resultSpan.textContent = reversed;
+            else {
+                const counter = freqCount(inputValue);
+                resultSpan.textContent = JSON.stringify(counter);
+            }
+
         });
-        function reverseStr(str) {
-            if (str.length < 1) {
-                return false;
+        function freqCount(s) {
+            const count = {};
+            for (let x of s) {
+                count[x] = (count[x] || 0) + 1;
             }
-            let newString = ""
-            for (let i = str.length - 1; i >= 0; i--) {
-                newString += str[i]
-            }
-            return newString;
-        }
+            return count;
+        };
     </script>
 </body>
 

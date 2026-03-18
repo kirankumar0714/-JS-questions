@@ -11,19 +11,21 @@
 </head>
 
 <body>
-    <div>
-       <button onclick="getURL()" id="checkButton">Get URL</button>
-       <div id="result"></div>
-    </div>
+    <form>
+        <div>
+            <button onclick="getURL()" id="checkButton">Get URL</button>
+            <div id="result"></div>
+        </div>
+    </form>
     <script>
-    const checkButton = document.getElementById('checkButton');
-    const resultDiv = document.getElementById('result');
+        const checkButton = document.getElementById('checkButton');
+        const resultDiv = document.getElementById('result');
 
-    function getURL(){
-          let url = window.location.href
-          console.log(url)
-          resultDiv.textContent = url
-    };
+        function getURL() {
+            let url = window.location.href
+            console.log(url)
+            resultDiv.textContent = url
+        };
     </script>
 </body>
 

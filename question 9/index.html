@@ -11,23 +11,22 @@
 </head>
 
 <body>
-    <div>
-        <button id="checkButton">Find Date</button>
-        <div id="resultDiv">Result :</div>
-    </div>
+    <form>
+        <div>
+            <button id="checkButton">Find Date</button>
+            <div id="resultDiv">Result :</div>
+        </div>
+    </form>
+
     <script>
-  
-    const checkButton = document.getElementById('checkButton');
-    const resultSpan = document.getElementById('resultDiv');
 
-    checkButton.addEventListener('click', function() {
-    
-         let now = new Date();
+        const checkButton = document.getElementById('checkButton');
+        const resultSpan = document.getElementById('resultDiv');
 
-         console.log(now)
-
-         resultSpan.textContent = now
-});
+        checkButton.addEventListener('click', function () {
+            let now = new Date();
+            resultSpan.textContent = now
+        });
     </script>
 </body>
 

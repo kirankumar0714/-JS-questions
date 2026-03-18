@@ -11,13 +11,16 @@
 </head>
 
 <body>
-    <div>
-        <label for="">Enter a Sentence :</label>
-        <input type="text" name="" id="textContainer">
-        <div id="errorDiv">Error :</div>
-        <button id="checkBtn">Count Words </button>
-        <div id="resultDiv">Result :</div>
-    </div>
+    <form>
+        <div>
+            <label for="">Enter a Sentence :</label>
+            <input type="text" name="" id="textContainer">
+            <div id="errorDiv">Error :</div>
+            <button id="checkBtn">Count Words </button>
+            <div id="resultDiv">Result :</div>
+        </div>
+
+    </form>
     <script>
         const inputvalue = document.getElementById("textContainer");
         const checkEvent = document.getElementById("checkBtn")
@@ -33,31 +36,31 @@
             if (/[^a-zA-Z0-9\s]/g.test(sentence)) {
                 errorEvent.textContent = "Not allowed"
             }
-            if(/^\d+$/){
+            if (/^\d+$/) {
                 errorEvent.textContent = " Numbers Not Allowed"
             } else {
                 const result = palindrome(sentence);
-                if(result == true){
-                     resultEvent.textContent = "This is a Palindrome";
-                }else(
+                if (result == true) {
+                    resultEvent.textContent = "This is a Palindrome";
+                } else (
                     resultEvent.textContent = "This is not a Palindrome"
                 )
-               
+
             }
         });
-         function palindrome(str) {
-               let reverse = "";
-               for(let i = str.length-1;i>=0;i--){
-                    reverse += str[i];
-               }
-               console.log('reverse:', reverse)
-               if(reverse == str){
-                return true;
-               }
-               else{
-                return  false;
-               }
+        function palindrome(str) {
+            let reverse = "";
+            for (let i = str.length - 1; i >= 0; i--) {
+                reverse += str[i];
             }
+            console.log('reverse:', reverse)
+            if (reverse == str) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
     </script>
 </body>
 

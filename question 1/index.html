@@ -8,13 +8,15 @@
 </head>
 
 <body>
-    <div>
+    <form >
+        <div>
         <label for="">Enter a sentence : </label>
         <input type="text" id="textContainer">
         <div id="errorDiv">Error :</div>
         <button id="checkButton">Find Words</button>
         <div id="resultDiv">Result :</div>
     </div>
+    </form>
     <script>
         const inputValue = document.getElementById("textContainer");
         const errorEvent = document.getElementById("errorDiv");
@@ -26,7 +28,6 @@
         checkBtn.addEventListener("click", function() {
             errorEvent.innerHTML = "";
             resultEvent.innerHTML = "";
-            console.log("hello")
             const text = inputValue.value;
             const result = strLength(text);
             if (result) {
@@ -35,7 +36,6 @@
         });
         function strLength(str) {
             const words = str.trim().split(/\s+/).filter(word => word.length > 0);
-            console.log('words:', words);
             if (words.length === 0) {
                 errorEvent.innerHTML = "Please enter something";
                 return null; 

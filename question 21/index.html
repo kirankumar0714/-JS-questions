@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Characters count</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <form>
+        <div><b>Word and Character count</b></div>
+        <textarea id="area" rows="5" cols="30" placeholder="Enter your Text Here" maxlength="200"></textarea>
+        <span id="char">200</span> Characters
+    </form>
+        <script>
+            let area = document.getElementById('area');
+            let char = document.getElementById('char');
+
+            area.addEventListener('input', function () {
+
+                let content = this.value;
+                char.textContent = content.length;
+                content.trim();
+                console.log(content)
+                if (maxLength) {
+                    let remaining = maxLength - totalLength;
+                    remainingCountSpan.textContent = remaining;
+                }
+            });
+        </script>
+</body>
+
+</html>

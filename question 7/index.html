@@ -11,13 +11,16 @@
 </head>
 
 <body>
-      <div>
+    <form>
+           <div>
         <label for="">Enter the Numbers : </label>
         <input type="text" pattern="[0-9,]*" title="Numbers separated by comma" id="textContainer">
         <div id="resultDiv">Result :</div>
         <button class="checkButton">Add</button>
         <button class="checkButton">Multiply</button>
     </div>
+    </form>
+   
     <script>
     const textInput = document.getElementById('textContainer');
     const checkButton = document.querySelector('.checkButton');

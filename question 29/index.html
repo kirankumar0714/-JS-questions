@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UpperCase</title>
+    <style>
+
+    </style>
+</head>
+
+<body><form>
+    <label for="">Enter a text :</label>
+     <input type="text" name="" id="textContent">
+    <button onclick="myFunction()">click</button>
+    <div id="resultDiv">Result :</div>
+</form>
+    <script>
+        function myFunction() {
+            const elementDiv = document.getElementById("textContent");
+            const resultEvent = document.getElementById("resultDiv");
+            const inputVal = elementDiv.value.toUpperCase();
+            resultEvent.innerHTML =`UpperCase : ${inputVal}`;
+        }
+    </script>
+</body>
+
+</html>
