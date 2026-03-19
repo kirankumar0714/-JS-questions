@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Pop Up</title>
+    <style>
+  
+    </style>
+</head>
+
+<body>
+    <h2>Modal Example</h2>
+    <button id="myBtn">Open Modal</button>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <p>Hello Users</p>
+            <button id="clrBtn">Click</button>
+
+        </div>
+
+    </div>
+
+    <script>
+        const modaler = document.getElementById("myModal");
+        const  button = document.getElementById("myBtn");
+        const  clearButton = document.getElementById("clrBtn");
+        const closeDiv = document.getElementsByClassName("close");
+
+        button.onclick = function () {
+            modaler.style.display = "block";
+        }
+        closeDiv.onclick = function(){
+            modaler.style.display = "none"
+        }
+        clearButton.onclick = function (){
+                modaler.style.display = "none";
+            }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinate Images</title>
+    <style>
+        .imgContainer {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            height: 10vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>My Infinite Scroll List</h1>
+        <div class="imgContainer">
+
+        </div>
+        <div class="loader">
+            <p>Loading more items...</p>
+        </div>
+    </div>
+    <script>
+        const itemList = document.querySelector('.imgContainer');
+        const loader = document.querySelector('.loader');
+        let imageCount = 0;
+        let imageLoad = 10;
+        let isLoading = false;
+        function loadImages(count) {
+            if (isLoading) return;
+            isLoading = true;
+            setTimeout(() => {
+                for (let i = 0; i < count; i++) {
+                    const imageCard = document.createElement('div');
+                    imageCard.className = 'image-card';
+                    const img = document.createElement('img');
+                    img.src = `https://picsum.photos/500/300?random=${Date.now()}${Math.random()}`;
+                    img.alt = 'Random Image';
+                    const caption = document.createElement('p');
+                    caption.textContent = `Image ${imageCount + 1}`;
+                    imageCard.appendChild(img);
+                    imageCard.appendChild(caption);
+                    itemList.appendChild(imageCard);
+                    imageCount++;
+                }
+                isLoading = false;
+            }, 1000);
+        }
+        loadImages(imageLoad);
+
+        window.addEventListener('scroll', () => {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+                showLoader();
+            }
+        });
+
+        function showLoader() {
+            loader.style.display = 'block';
+            setTimeout(() => {
+                loader.style.display = 'none';
+                loadImages(imageLoad);
+            }, 500);
+        }
+
+    </script>
+    </script>
+</body>
+
+</html>

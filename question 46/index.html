@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Pop Up</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <button id="openModal">Login</button>
+    <div id="loginModal" class="modal">
+        <div class="modalContent">
+            <span class="close">&times;</span>
+            <form id="loginForm">
+                <h2>Login</h2>
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+                <button type="submit">Log In</button>
+            </form>
+            <script>
+                var modal = document.getElementById("loginModal");
+                var openButton = document.getElementById("openModal");
+                var closeDiv = document.getElementsByClassName("close")[0];
+                var loginForm = document.getElementById("loginForm");
+
+                openButton.onclick = function () {
+                    modal.style.display = "block";
+                }
+                closeDiv.onclick = function () {
+                    modal.style.display = "none";
+                }
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
+                loginForm.addEventListener("submit", function (event) {
+                    event.preventDefault(); 
+                    var email = document.getElementById("email").value;
+                    var password = document.getElementById("password").value;
+                    console.log("Email:", email);
+                    console.log("Password:", password); 
+                })
+            </script>
+</body>
+
+</html>

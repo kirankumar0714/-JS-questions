@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Items</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>My Infinite Scroll List</h1>
+        <div class="itemList">
+
+        </div>
+        <div class="loader">
+            <p>Loading more items...</p>
+        </div>
+    </div>
+    <script>
+        const itemList = document.querySelector('.itemList');
+        const loader = document.querySelector('.loader');
+        let itemCount = 1;
+        let isLoading = false;
+        function loadMoreContent() {
+            if (isLoading) return;
+            isLoading = true;
+            setTimeout(() => {
+                for (let i = 0; i < 10; i++) {
+                    let item = document.createElement("div");
+                    item.classList.add("item");
+                    item.textContent = `item ${itemCount++}`;
+                    itemList.appendChild(item);
+                }
+                isLoading = false;
+            }, 1000);
+        }
+
+        window.addEventListener('scroll', () => {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+                loadMoreContent();
+            }
+        });
+        loadMoreContent();
+    </script>
+</body>
+
+</html>

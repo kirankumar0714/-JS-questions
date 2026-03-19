@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse A String</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <form>
+        <div>
+            <label for="">Search Here :</label>
+            <input type="text" id="textEvent" oninput="deBounce(searchInput,1000)">
+            <div id="resultDiv">Result :</div>
+        </div>
+    </form>
+    <script>
+        const searchElement = document.getElementById("textEvent");
+        const resultEvent = document.getElementById("resultDiv");
+
+        function deBounce(callback, delay) {
+            let timeout;
+            return function (...args) {
+                clearTimeout(timeout)
+                timeout = setTimeout(() => {
+                    callback(...args)
+                }, delay)
+            }
+            console.log("hello")
+        }
+
+        function searchInput(event) {
+           const value = event.target.value;
+            resultEvent.innerHTML = ` Searched Value : ${value}`
+        }
+        const debounceHandler = deBounce(searchInput, 1000);
+        searchElement.addEventListener('input', debounceHandler);
+    </script>
+</body>
+
+</html>
