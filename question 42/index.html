@@ -1,28 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Sliders</title>
     <style>
+        #container {
+            max-width: 1000px;
+            position: relative;
+            margin: auto;
+            background-color: darksalmon;
+        }
+
+        .mySlides {
+            display: none;
+            text-align: center;
+        }
+
+        .mySlides img {
+            width: 60%;
+            height: 60%;
+        }
+
+        .text {
+            color: #f2f2f2;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
 
     </style>
 </head>
 
 <body>
-     <div>
+    <div id="container">
         <div class="mySlides">
-            <img src="img1.jpg" style="width:10%">
+            <img src="img1.jpg">
             <div class="text">Caption One</div>
         </div>
 
-        <div class="mySlides">
-            <img src="img2.jpg" style="width:10%">
+        <div class="mySlides" style="width: 50%;">
+            <img src="img2.jpg">
             <div class="text">Caption Two</div>
         </div>
 
         <div class="mySlides">
-            <img src="img3.jpg" style="width:10%">
+            <img src="img3.jpg" style="width: 30%;">
             <div class="text">Caption Three</div>
         </div>
     </div>
@@ -30,19 +56,19 @@
         let slideIndex = 1;
         showSlides(slideIndex);
 
-      function slideShows(n){
-        setTimeout(showSlides(n),3000)
-      }
+        function slideShows(n) {
+            setTimeout(showSlides(n), 3000)
+        }
 
         function showSlides(n) {
             let i;
             let slides = document.getElementsByClassName("mySlides");
             if (n > slides.length) {
                 slideIndex = 1
-             }
+            }
             if (n < 1) {
-                 slideIndex = slides.length 
-                }
+                slideIndex = slides.length
+            }
             for (i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";
             }

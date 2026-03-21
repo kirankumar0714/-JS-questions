@@ -2,46 +2,93 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reverse A String</title>
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reverse A String</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      background-color: rgb(170, 235, 179);
+      font-size: medium;
+    }
 
-    </style>
+    body {
+      height: 100vh;
+    }
+
+    #myForm {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+     #container {
+            border: 2px solid black;
+            border-radius: 20px;
+            line-height: 40px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+            background-color: transparent;
+            color: black;
+            height: 30%;
+            width: 20%;
+        }
+         #checkButton {
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        #checkButton:hover {
+            background-color: coral;
+        }
+  </style>
 </head>
 
 <body>
-      <form action="/submit" method="POST">
-  <div id="error-message" role="alert" style="color: red; display: none;"></div>
-  
-  <div>
-    <label for="fname">First Name *</label>
-    <input type="text" id="fname" name="fname" required>
-  </div>
-  <div>
-    <label for="lname">Last Name *</label>
-    <input type="text" id="lname" name="lname" required>
-  </div>
-  <div>
-    <label for="email">Email *</label>
-    <input type="email" id="email" name="email" required>
-  </div>
-  <div>
-    <label for="phone">Phone *</label>
-    <input type="tel" id="phone" name="phone" required>
-  </div>
-  <div>
-    <label for="zip">Zipcode</label>
-    <input type="text" id="zip" name="zip">
-  </div>
-  <div>
-    <label for="address">Address</label>
-    <textarea id="address" name="address"></textarea>
-  </div>
-  <button type="submit">Submit</button>
-</form>
-    <script>
-    </script>
+  <form id="myForm">
+    <div id="container">
+      <div>
+        <form action="/submit" method="POST">
+          <div id="error-message" role="alert" style="color: red; display: none;"></div>
+
+          <div>
+            <label for="fname">First Name *</label>
+            <input type="text" id="fname" name="fname" required>
+          </div>
+          <div>
+            <label for="lname">Last Name *</label>
+            <input type="text" id="lname" name="lname" required>
+          </div>
+          <div>
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div>
+            <label for="phone">Phone *</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+          <div>
+            <label for="zip">Zipcode</label>
+            <input type="text" id="zip" name="zip">
+          </div>
+          <div>
+            <label for="address">Address</label>
+            <textarea id="address" name="address"></textarea>
+          </div>
+          <button type="submit" id="checkButton">Submit</button>
+        </form>
+      </div>
+    </div>
+  </form>
+  <script>
+
+    
+  </script>
 </body>
 
 </html>

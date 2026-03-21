@@ -6,48 +6,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reverse A String</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(170, 235, 179);
+            font-size: medium;
+        }
 
+        body {
+            height: 100vh;
+        }
+
+        #myForm {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #container {
+            border: 2px solid black;
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+            background-color: transparent;
+            color: black;
+            height: 30%;
+            width: 20%;
+        }
+
+        #textContainer {
+            width: 70%;
+            padding: 7px;
+            border-radius: 10px;
+        }
+
+        .checkButton {
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        .checkButton:hover {
+            background-color: coral;
+        }
+
+        #resultDiv {
+            text-align: center;
+            font-size: larger;
+        }
+
+        label {
+            font-size: larger;
+        }
     </style>
 </head>
 
 <body>
-    <form>
-           <div>
-        <label for="">Enter the Numbers : </label>
-        <input type="text" pattern="[0-9,]*" title="Numbers separated by comma" id="textContainer">
-        <div id="resultDiv">Result :</div>
-        <button class="checkButton">Add</button>
-        <button class="checkButton">Multiply</button>
-    </div>
+    <form id="myForm">
+        <div id="container">
+            <label for="">Enter the Numbers : </label>
+            <input type="text" pattern="[0-9,]*" title="Numbers separated by comma" id="textContainer">
+            <div id="resultDiv">Result :</div>
+            <button class="checkButton">Add</button>
+            <button class="checkButton">Multiply</button>
+        </div>
     </form>
-   
     <script>
-    const textInput = document.getElementById('textContainer');
-    const checkButton = document.querySelector('.checkButton');
-    const resultSpan = document.getElementById('resultDiv');
+        const textInput = document.getElementById('textContainer');
+        const checkButton = document.querySelector('.checkButton');
+        const resultSpan = document.getElementById('resultDiv');
 
-    checkButton.addEventListener('click', function() {
-        resultSpan.textContent="";
-    const inputValue = textInput.value;
-    let numArray = inputValue.split(',').map(Number);
-    if(numArray ===""){ 
-        errorText.textContent = "Please enter something"
-    }
-   const addition = add(...numArray); 
-    resultSpan.textContent = addition;
+        checkButton.addEventListener('click', function (e) {
+            e.preventDefault()
+            resultSpan.textContent = "";
+            const inputValue = textInput.value;
+            let numArray = inputValue.split(',').map(Number);
+            if (numArray === "") {
+                errorText.textContent = "Please enter something"
+            }
+            const addition = add(numArray);
+            const multiplication = multiply(numArray);
+            console.log('multiplication:', multiplication)
+            resultSpan.innerHTML = `Additon : ${addition}  Multiplication : ${multiplication}`;
 
-    const multiplication = multiply(...numArray);
-    resultSpan.textContent = multiplication;
+        });
+        function add(arr) {
+            let result = 0
+            for (let ele of arr) {
+                result += ele
+            }
+            console.log(result)
+            return result;
+        }
 
-  });
-  function add(arr) {
-      let add = arr.map((acc, cur) => acc + cur, 0);
-      return add;
-}
-
-  function multiply(arr) {
-   return arr.map((acc, cur) => acc * cur, 0);
-}
+        function multiply(arr) {
+            let result = 0;
+            for (let ele of arr) {
+                result *= ele
+            }
+            return result;
+        }
 
     </script>
 </body>

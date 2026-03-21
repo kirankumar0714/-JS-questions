@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Undo Redo</title>
+    <style>
+        #input {
+            border: 2px solid #ccc;
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+        }
+
+
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        #undo {
+            background-color: #f44336;
+        }
+
+
+        #redo {
+            background-color: #008CBA;
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+
+        button:active {
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="text" id="input">
+
+    <button onclick="undo()">Undo</button>
+    <button onclick="redo()">Redo</button>
+
+    <script>
+
+        let history = []
+        let index = -1
+
+        document.getElementById("input").addEventListener("input", function (e) {
+            history = history.slice(0, index + 1)
+            history.push(e.target.value)
+            index++
+        })
+
+        function undo() {
+            if (index > 0) {
+                index--
+                document.getElementById("input").value = history[index]
+            }
+        }
+
+        function redo() {
+            if (index < history.length - 1) {
+                index++
+                document.getElementById("input").value = history[index]
+            }
+        }
+
+    </script>

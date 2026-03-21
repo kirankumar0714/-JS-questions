@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pagination</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <h2>Pagination</h2>
+  <div id="list"></div>
+        <button onclick="prev()">Prev</button>
+        <button onclick="next()">Next</button>
+    <script>
+
+        let data = []
+
+        for (let i = 1; i <= 50; i++) {
+            data.push("Item " + i)
+        }
+
+        let page = 1
+        let perPage = 10
+
+        function render() {
+
+            let start = (page - 1) * perPage
+            let end = start + perPage
+
+            let items = data.slice(start, end)
+
+            let output = ""
+
+            for (let i = 0; i < items.length; i++) {
+                output += items[i] + "<br>"
+            }
+
+            document.getElementById("list").innerHTML = output
+
+        }
+
+        function next() {
+            page++
+            render()
+        }
+
+        function prev() {
+            if (page > 1) {
+                page--
+                render()
+            }
+        }
+
+        render()
+
+    </script>
+
+</body>
+
+</html>

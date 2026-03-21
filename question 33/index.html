@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag A File</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(170, 235, 179);
+            font-size: medium;
+        }
+
+        body {
+            height: 100vh;
+        }
+
+        #myForm {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #container {
+            border: 2px solid black;
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+            background-color: transparent;
+            color: black;
+            height: 30%;
+            width: 20%;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="myForm">
+    <div id="container">
+            <h1>Drag and drop files here</h1>
+            <div id="imageArea">Drag Here</div>
+            <div id="resultDiv"></div>
+        </div>
+    </div>
+    </form>
+    <script>
+        const area = document.getElementById("imageArea")
+
+        const result = document.getElementById("resultDiv")
+
+
+        area.addEventListener("dragover", (e) => {
+            e.preventDefault()
+        })
+
+        area.addEventListener("drop", (e) => {
+            const file = e.dataTransfer.files[0]
+
+            if ((file.name).endsWith(".jpg")) {
+                result.innerText = "Image file name = " + file.name
+            }
+            else {
+                result.innerText = "Only images Allowed"
+            }
+
+        })
+    </script>
+</body>
+
+</html>

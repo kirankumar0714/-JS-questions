@@ -6,21 +6,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Checker</title>
     <style>
-       
+            * {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(167, 224, 224);
+            font-size: medium;
+        }
+
+        body {
+            height: 100vh;
+        }
+
+        #myForm {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #container {
+            border: 2px solid black;
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+            background-color: transparent;
+            color: black;
+            height: 30%;
+            width: 20%;
+        }
+
+        #checkButton {
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        #checkButton:hover {
+            background-color: coral;
+        }
+
+        #resultDiv {
+            text-align: center;
+            font-size: larger;
+        }
     </style>
 </head>
 
 <body>
-    <div>
+    <form id="myForm">
+    <div id="container">
         <label for="">Password</label>
-        <input type="text" id="password"placeholder="Type your password here" />
+        <input type="text" id="password" placeholder="Type your password here" />
         <label for="">
-              Strength of password
-          </label>
-            <div id="strengthDiv"></div>
+            Strength of password
+        </label>
+        <div id="errorDiv">Error :</div>
+        <button id="checkButton">Find</button>
+        <div id="resultDiv">Result :</div>
     </div>
+    </form>
     <script>
+        const input = document.getElementById('password')
 
+        const error = document.getElementById("errorDiv")
+
+        const result = document.getElementById("resultDiv")
+
+        const btn = document.getElementById('checkButton')
+
+
+        btn.addEventListener("click", (e) => {
+            e.preventDefault()
+
+            const inputValue = input.value
+
+            error.innerText = ''
+            result.innerText = ''
+
+            if (/^$/.test(inputValue)) {
+                error.innerText = "Empty input not allowed"
+                return
+            }
+            let score = 0
+
+            if (inputValue.length >= 8) {
+                if (/[a-z]/.test(inputValue)) {
+                    score++
+                }
+                if (/[A-Z]/.test(inputValue)) {
+                    score++
+                }
+                if (/[0-9]/.test(inputValue)) {
+                    score++
+                }
+                if (/[$&+,:;=?@#|'<>.-^*()%!a-zA-Z0-9]/.test(inputValue)) {
+                    score++
+                }
+            }
+            console.log(score);
+
+
+            if (score <= 2) {
+                result.innerText = "Weak"
+            }
+            else if (score <= 3) {
+                result.innerText = "Medium"
+            }
+            else {
+                result.innerText = "Strong"
+            }
+
+        })
     </script>
 </body>
 

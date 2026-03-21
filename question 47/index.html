@@ -6,12 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OTP Generator</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(170, 235, 179);
+            font-size: medium;
+        }
 
+        body {
+            height: 100vh;
+        }
+
+        #myForm {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #container {
+            border: 2px solid black;
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+            background-color: transparent;
+            color: black;
+            height: 30%;
+            width: 20%;
+        }
     </style>
 </head>
 
 <body>
-    <form>
+    <form id="myForm">
         <div class="container">
             <div><b>OTP :</b></div>
             <div id="inputs" class="inputs">

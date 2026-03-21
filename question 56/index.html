@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Highliter</title>
+    <style>
+        #searchInput {
+            padding: 8px;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+            color: black;
+        }
+
+
+        #content {
+            border: 1px solid #eee;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+        <body>
+            <label>Search within text: <input id="searchInput" type="text" /></label>
+            <div id="content">
+                <p>JavaScript is a high-level, dynamic, multi-paradigm language. Highlighting search results enhances
+                    user experience by making results visually prominent.It is used for creating web applications
+                    Web Development: Adding
+                    interactive elements such as dropdown menus, animated graphics, interactive forms, and automatic
+                    content updates.
+                    Mobile App Development: Using frameworks like React Native to build cross-platform mobile
+                    applications for iOS and Android.
+                    Game Development: Creating browser-based games with libraries such as Phaser.
+                    Server-Side Programming: Building scalable network applications and APIs with Node.js.
+                    Artificial Intelligence & Machine Learning: Integrating with AI tools and libraries such as
+                    TensorFlow.js.
+                    aws.amazon.com
+                    aws.amazon.com12</p>
+            </div>
+    </div>
+
+    <script>
+
+        const searchInput = document.getElementById("searchInput");
+        const contentElement = document.getElementById("content");
+
+        const originalContent = contentElement.innerHTML;
+
+        searchInput.addEventListener("input", () => {
+            const searchTerm = searchInput.value.trim();
+            contentElement.innerHTML = originalContent;
+            if (searchTerm === "") {
+                return;
+            }
+            const regex = new RegExp(`(${searchTerm})`, "gi");
+
+            const highlightedContent = contentElement.innerHTML.replace(regex, (match) => {
+                return `<mark>${match}</mark>`;
+            });
+
+            contentElement.innerHTML = highlightedContent;
+        });
+
+    </script>
+</body>
+
+</html>

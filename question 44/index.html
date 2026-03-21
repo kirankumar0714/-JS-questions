@@ -6,7 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modal Pop Up</title>
     <style>
-  
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+
+        }
+
+        #clrBtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        #clrBtn:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 
@@ -24,19 +59,19 @@
 
     <script>
         const modaler = document.getElementById("myModal");
-        const  button = document.getElementById("myBtn");
-        const  clearButton = document.getElementById("clrBtn");
+        const button = document.getElementById("myBtn");
+        const clearButton = document.getElementById("clrBtn");
         const closeDiv = document.getElementsByClassName("close");
 
         button.onclick = function () {
             modaler.style.display = "block";
         }
-        closeDiv.onclick = function(){
+        closeDiv.onclick = function () {
             modaler.style.display = "none"
         }
-        clearButton.onclick = function (){
-                modaler.style.display = "none";
-            }
+        clearButton.onclick = function () {
+            modaler.style.display = "none";
+        }
     </script>
 </body>
 

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Drag and Drop</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Kanban Darg And Drop</h1>
+        <div id="board">
+            <div id="todotask">
+                <div class="task" draggable="true">Item 1</div>
+                <div class="task" draggable="true">Item 2</div>
+                <div class="task" draggable="true">Item 3</div>
+            </div>
+            <div id="progressTask">Progress </div>
+            <div id="doneTask">Done</div>
+        </div>
+    </div>
+    </div>
+    <script>
+
+        const tasks = document.querySelectorAll(".item")
+
+        const progressTask = document.getElementById("progressTask")
+
+        const doneTask = document.getElementById("doneTask")
+
+        tasks.forEach((task) => {
+            task.addEventListener("dragstart", (e) => {
+                e.dataTransfer.setData("text", e.target.id)
+            })
+        })
+
+        progressTask.addEventListener("dragover", (e) => {
+            e.preventDefault()
+        })
+
+        progressTask.addEventListener("drop", (e) => {
+            e.preventDefault()
+
+            let id = e.dataTransfer.getData("text")
+
+            let dragElement = document.getElementById(id)
+
+            progressTask.appendChild(dragElement)
+
+        })
+
+        doneTask.addEventListener("dragover", (e) => {
+            e.preventDefault()
+        })
+
+        doneTask.addEventListener("drop", (e) => {
+            e.preventDefault()
+
+            let id = e.dataTransfer.getData("text")
+
+            let dragElement = document.getElementById(id)
+
+            doneTask.appendChild(dragElement)
+
+        })
+    </script>
+</body>
+
+</html>

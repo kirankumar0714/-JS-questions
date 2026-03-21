@@ -3,6 +3,39 @@
 
 <head>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(167, 224, 224);
+            font-size: medium;
+        }
+
+        body {
+            height: 100vh;
+        }
+
+        #myForm {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #container {
+            border: 2px solid black;
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+            background-color: transparent;
+            color: black;
+            height: 30%;
+            width: 20%;
+        }
+
         #div1 {
             width: 250px;
             height: 70px;
@@ -10,6 +43,20 @@
             border: 1px solid #aaaaaa;
         }
     </style>
+
+</head>
+
+<body>
+    <form id="myForm">
+        <div id="container">
+            <div>Drag and Drop :</div>
+
+            <div id="div1" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)"></div>
+            <br>
+            <img id="img1" src="image.jpg" draggable="true" ondragstart="dragHandler(event)" width="200" height="80">
+
+        </div>
+    </form>
     <script>
         function dragHandler(ev) {
             ev.dataTransfer.setData("text", ev.target.id);
@@ -25,14 +72,6 @@
             ev.target.appendChild(document.getElementById(data));
         }
     </script>
-</head>
-
-<body>
-    <div>Drag and Drop :</div>
-
-    <div id="div1" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)"></div>
-    <br>
-    <img id="img1" src="image.jpg" draggable="true" ondragstart="dragHandler(event)" width="200" height="80">
 
 </body>
 

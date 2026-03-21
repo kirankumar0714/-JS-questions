@@ -4,43 +4,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Character Length</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(219, 203, 203);
+            font-size: medium;
+        }
+        body{
+            height: 100vh;
+        }
+        #myform{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #container{
+            border: 2px solid black;
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+            background-color: transparent;
+            color: black;
+            height: 30%;
+            width: 20%;
+        }
+        #textContainer{
+            width: 70%;
+            padding: 7px;
+            border-radius: 10px;
+        }
+
+        #checkButton{
+            border-radius: 10px;
+            padding: 5px;
+        }
+        #checkButton:hover{
+            background-color: coral;
+        }
+
+        #resultDiv{
+            text-align: center;
+            font-size: larger;
+        }
+
+        label{
+            font-size: larger;
+        }
+    </style>
 </head>
 
 <body>
-    <form >
-        <div>
-        <label for="">Enter a sentence : </label>
-        <input type="text" id="textContainer">
-        <div id="errorDiv">Error :</div>
-        <button id="checkButton">Find Words</button>
-        <div id="resultDiv">Result :</div>
-    </div>
+    <form id="myform">
+        <div id="container">
+            <label for="">Enter a sentence : </label>
+            <input type="text" id="textContainer">
+            <div id="errorDiv">Error :</div>
+            <button id="checkButton">Find Words</button>
+            <div id="resultDiv">Result :</div>
+        </div>
     </form>
+
     <script>
         const inputValue = document.getElementById("textContainer");
         const errorEvent = document.getElementById("errorDiv");
         const resultEvent = document.getElementById("resultDiv");
         const checkBtn = document.getElementById("checkButton");
-    
         const text = inputValue.value;
-
-        checkBtn.addEventListener("click", function() {
+        checkBtn.addEventListener("click", function (e) {
+            e.preventDefault();
             errorEvent.innerHTML = "";
             resultEvent.innerHTML = "";
             const text = inputValue.value;
             const result = strLength(text);
             if (result) {
-                resultEvent.textContent = `Smallest word: "${result.smallest}" , Largest word: "${result.largest}" `;
+                resultEvent.innerHTML = `<p>Smallest word: ${result.smallest}</p> 
+                <p> Largest word: ${result.largest}</p>`;
             }
         });
         function strLength(str) {
             const words = str.trim().split(/\s+/).filter(word => word.length > 0);
             if (words.length === 0) {
                 errorEvent.innerHTML = "Please enter something";
-                return null; 
+                return null;
             }
-
             let smallest = words[0];
             let largest = words[0];
 

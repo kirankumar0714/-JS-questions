@@ -6,32 +6,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Characters count</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(167, 224, 224);
+            font-size: medium;
+        }
 
+        body {
+            height: 100vh;
+        }
+
+        #myForm {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #container {
+            border: 2px solid black;
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+            background-color: transparent;
+            color: black;
+            height: 30%;
+            width: 20%;
+        }
     </style>
 </head>
 
 <body>
-    <form>
-        <div><b>Word and Character count</b></div>
-        <textarea id="area" rows="5" cols="30" placeholder="Enter your Text Here" maxlength="200"></textarea>
-        <span id="char">200</span> Characters
+    <form id="myForm">
+        <div id="container">
+            <div><b>Word and Character count</b></div>
+            <textarea id="area" rows="5" cols="30" placeholder="Enter your Text Here" maxlength="200"></textarea>
+            <span id="char">200</span> Characters
+        </div>
     </form>
-        <script>
-            let area = document.getElementById('area');
-            let char = document.getElementById('char');
+    <script>
+        let area = document.getElementById('area');
+        let char = document.getElementById('char');
 
-            area.addEventListener('input', function () {
+        area.addEventListener('input', function () {
 
-                let content = this.value;
-                char.textContent = content.length;
-                content.trim();
-                console.log(content)
-                if (maxLength) {
-                    let remaining = maxLength - totalLength;
-                    remainingCountSpan.textContent = remaining;
-                }
-            });
-        </script>
+            let content = this.value;
+            char.textContent = content.length;
+            content.trim();
+            console.log(content)
+            if (maxLength) {
+                let remaining = maxLength - totalLength;
+                remainingCountSpan.textContent = remaining;
+            }
+        });
+    </script>
 </body>
 
 </html>

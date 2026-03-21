@@ -4,47 +4,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CheckBox Manager</title>
+    <title>Select All Checkbox</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(221, 224, 195);
+            font-size: medium;
+        }
 
+        body {
+            height: 100vh;
+        }
+
+        #myForm {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #container {
+            border: 2px solid black;
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+            background-color: transparent;
+            color: black;
+            height: 30%;
+            width: 20%;
+        }
+        #selectAllCheckbox {
+            border-radius: 10px;
+            padding: 5px;
+        }
+        #unselectAllCheckbox {
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        #selectAllCheckbox:hover {
+            background-color: coral;
+        }
+        #unselectAllCheckbox:hover {
+            background-color: coral;
+        }
+        .checkboxes{
+            display: flex;
+        }
     </style>
 </head>
 
 <body>
-  <form>
-     <div>
-        <label for="">Select a Option : </label>
-        <input type="checkbox" class="valueDiv">
-        <label for="">Option 1</label>
-        <input type="checkbox" class="valueDiv">
-        <label for="">Option 2</label>
-        <input type="checkbox" class="valueDiv">
-        <label for="">Option 3</label>
-        <input type="checkbox" class="valueDiv">
-        <label for="">Option 4</label>
-        <input type="checkbox" class="valueDiv">
-        <label for="">Option 5</label>
-        <button id="checkedBox" onclick="checkAll()">Check All</button>
-        <button id="uncheckedBox" onclick="checkAll()">Uncheck All</button>
-        <button id="toggleBox">Toggle</button>
-    </div>
-  </form>
+    <form id="myForm">
+        <div id="container">
+            <button id="selectAllCheckbox">Select All</button>
+            <button id="unselectAllCheckbox">UnSelect All</button>
+            <br>
+            <div class="options_box">
+                <input type="checkbox" class="checkboxes">
+                Checkbox 1
+                <input type="checkbox" class="checkboxes">
+                Checkbox 2
+                <input type="checkbox" class="checkboxes">
+                Checkbox 3
+                <input type="checkbox" class="checkboxes">
+                Checkbox 4
+            </div>
+        </div>
+    </form>
     <script>
 
-        function checkAll() {
-  const checkboxes = document.querySelectorAll(".valueDiv");
-  checkboxes.forEach((checkbox) => {
-    checkbox.checked = true;
-  });
-}
-function checkAll() {
-  const checkboxes = document.querySelectorAll(".valueDiv");
-  checkboxes.forEach((checkbox) => {
-    checkbox.checked = false; 
-  });
-}
+        document.getElementById('selectAllCheckbox').addEventListener('click', function (e) {
+            e.preventDefault()
+            let checkboxes = document.querySelectorAll('.checkboxes');
+            console.log(checkboxes)
+            checkboxes.forEach(function (checkbox) {
+                checkbox.checked = this.checked;
+            }, this);
+        });
 
-       
+        document.getElementById('unselectAllCheckbox').addEventListener('click', function (e) {
+            e.preventDefault()
+            let checkboxes = document.querySelectorAll('.checkboxes');
+            console.log(checkboxes)
+            checkboxes.forEach(function (checkbox) {
+                checkbox.checked = false;
+            });
+        });
+
     </script>
 </body>
 

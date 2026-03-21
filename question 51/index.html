@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Logger (Debounce & Throttle)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Scroll Logger Demo</h1>
+        <p>Scroll down to see events logged below.</p>
+    </header>
+    <div class="content">
+        <p>Scroll</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>MitrahSoft</p>
+        <p>Check console</p>
+    </div>
+
+    <script>
+        const debounce = (callback, delay) => {
+            let timeoutId;
+            return (...args) => {
+                window.clearTimeout(timeoutId);
+                timeoutId = window.setTimeout(() => {
+                    callback.apply(null, args);
+                }, delay);
+            };
+        }
+
+        const throttle = (callback, limit) => {
+            let inThrottle;
+            return (...args) => {
+                if (!inThrottle) {
+                    callback.apply(this, args);
+                    inThrottle = true;
+                    setTimeout(() => (inThrottle = false), limit);
+                }
+            };
+        };
+
+        const scrollEvent = (method) => {
+            console.log(`${method} event logged at scroll position:`, window.scrollY);
+        };
+        const debouncedScrollLog = debounce(() => {
+            scrollEvent("Debounced");
+        }, 200);
+        window.addEventListener("scroll", debouncedScrollLog);
+
+        const throttledScrollLog = throttle(() => {
+            scrollEvent("Throttled");
+        }, 200);
+        window.addEventListener("scroll", throttledScrollLog);
+    </script>
+</body>
+
+</html>

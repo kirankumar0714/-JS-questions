@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>OTP Paste</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(170, 235, 179);
+            font-size: medium;
+        }
+
+        body {
+            height: 100vh;
+        }
+
+        #myForm {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+      
+    </style>
+</head>
+
+<body>
+    <form id="myForm">
+        <div id="container">
+            <h2>Paste OTP</h2>
+
+            <input maxlength="1">
+            <input maxlength="1">
+            <input maxlength="1">
+            <input maxlength="1">
+            <input maxlength="1">
+            <input maxlength="1">
+
+        </div>
+    </form>
+
+
+    <script>
+        let inputs = document.querySelectorAll("input")
+        document.addEventListener("paste", function (e) {
+
+            let data = e.clipboardData.getData("text")
+
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].value = data[i] || ""
+            }
+
+        })
+
+    </script>
+
+</body>
+
+</html>

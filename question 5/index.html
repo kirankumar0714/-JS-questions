@@ -6,13 +6,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Largest Number</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(186, 197, 88);
+            font-size: medium;
+        }
 
+        body {
+            height: 100vh;
+        }
+
+        #myForm {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #container {
+            border: 2px solid black;
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+            background-color: transparent;
+            color: black;
+            height: 30%;
+            width: 20%;
+        }
+
+        #textContainer {
+            width: 70%;
+            padding: 7px;
+            border-radius: 10px;
+        }
+
+        #checkButton {
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        #checkButton:hover {
+            background-color: coral;
+        }
+
+        #resultDiv {
+            text-align: center;
+            font-size: larger;
+        }
+
+        label {
+            font-size: larger;
+        }
     </style>
 </head>
 
 <body>
-    <form>
-        <div>
+    <form id="myForm">
+        <div id="container">
             <label for="">Enter The Numbers : </label>
             <input type="text" pattern="[0-9,]*" title="Numbers separated by comma" id="textContainer">
             <div id="errorDiv">Error :</div>
@@ -20,27 +75,26 @@
             <div id="resultDiv">Result :</div>
         </div>
     </form>
-
     <script>
-        const textInput = document.getElementById('textContainer');
-        const errorText = document.getElementById('errorDiv');
-        const checkButton = document.getElementById('checkButton');
-        const resultSpan = document.getElementById('resultDiv');
+    const textInput = document.getElementById('textContainer');
+    const errorText = document.getElementById('errorDiv');
+    const checkButton = document.getElementById('checkButton');
+    const resultSpan = document.getElementById('resultDiv');
 
-        checkButton.addEventListener('click', function () {
-            resultSpan.textContent = "";
-            errorText.textContent = "";
-            const inputValue = textInput.value;
-            let numArray = inputValue.split(',').map(Number);
-            if (numArray === "") {
-                errorText.textContent = "Please enter something"
-            }
-            const maximum = Math.max(...numArray);
-            resultSpan.textContent = maximum;
-        });
-        function largestNumber(arr) {
-            return Math.max(...arr);
-        }
+    checkButton.addEventListener('click', function() {
+        resultSpan.textContent="";
+        errorText.textContent="";
+    const inputValue = textInput.value;
+    let numArray = inputValue.split(',').map(Number);
+    if(numArray ===""){
+        errorText.textContent = "Please enter something"
+    }
+   const maximum = Math.max(...numArray); 
+    resultSpan.textContent = maximum;
+  });
+  function largestNumber(arr) {
+        return Math.max(...arr);
+    }
     </script>
 </body>
 

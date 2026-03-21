@@ -6,20 +6,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reverse A String</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(167, 224, 224);
+            font-size: medium;
+        }
 
+        body {
+            height: 100vh;
+        }
+
+        #myForm {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #container {
+            border: 2px solid black;
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+            background-color: transparent;
+            color: black;
+            height: 30%;
+            width: 20%;
+        }
+
+        #checkButton {
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        #checkButton:hover {
+            background-color: coral;
+        }
+
+        #resultDiv {
+            text-align: center;
+            font-size: larger;
+        }
     </style>
 </head>
 
 <body>
-    
-    <div>
-        <input type="text" name="" id="timeEvent">
-        <div>Countdown: <span id="countdown">0</span>  seconds remaining</div>
-        <button onclick="countDown()">Click</button>
-    </div>
+    <form id="myForm">
+        <div id="container">
+            <input type="text" name="" id="timeEvent">
+            <div>Countdown: <span id="countdown">0</span> seconds remaining</div>
+            <button onclick="countDown()" id="checkButton">Click</button>
+        </div>
+    </form>
     <script>
         let timeData = document.getElementById("timeEvent").value;
-        function countDown(){
+        function countDown() {
+            event.preventDefault()
             var setTimer = setInterval(function () {
                 if (timeData <= 0) {
                     clearInterval(setTimer);

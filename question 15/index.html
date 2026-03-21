@@ -6,28 +6,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palindrome</title>
     <style>
+         * {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(219, 187, 138);
+            font-size: medium;
+        }
 
+        body {
+            height: 100vh;
+        }
+
+        #myForm {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #container {
+            border: 2px solid black;
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+            background-color: transparent;
+            color: black;
+            height: 30%;
+            width: 20%;
+        }
+        #checkButton {
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        #checkButton:hover {
+            background-color: coral;
+        }
+
+        #resultDiv {
+            text-align: center;
+            font-size: larger;
+        }
     </style>
 </head>
 
 <body>
-    <form>
-        <div>
+    <form id="myForm">
+        <div id="container">
             <label for="">Enter a Sentence :</label>
             <input type="text" name="" id="textContainer">
             <div id="errorDiv">Error :</div>
-            <button id="checkBtn">Count Words </button>
+            <button id="checkButton">Check</button>
             <div id="resultDiv">Result :</div>
         </div>
-
     </form>
     <script>
         const inputvalue = document.getElementById("textContainer");
-        const checkEvent = document.getElementById("checkBtn")
+        const checkEvent = document.getElementById("checkButton")
         const resultEvent = document.getElementById("resultDiv")
         const errorEvent = document.getElementById("errorDiv")
 
-        checkEvent.addEventListener("click", () => {
+        checkEvent.addEventListener("click", (e) => {
+            e.preventDefault()
 
             let sentence = inputvalue.value.toLowerCase().trim();
             if (sentence === "") {
@@ -36,31 +80,31 @@
             if (/[^a-zA-Z0-9\s]/g.test(sentence)) {
                 errorEvent.textContent = "Not allowed"
             }
-            if (/^\d+$/) {
+            if(!/^\d+$/){
                 errorEvent.textContent = " Numbers Not Allowed"
             } else {
                 const result = palindrome(sentence);
-                if (result == true) {
-                    resultEvent.textContent = "This is a Palindrome";
-                } else (
+                if(result == true){
+                     resultEvent.textContent = "This is a Palindrome";
+                }else(
                     resultEvent.textContent = "This is not a Palindrome"
                 )
-
+               
             }
         });
-        function palindrome(str) {
-            let reverse = "";
-            for (let i = str.length - 1; i >= 0; i--) {
-                reverse += str[i];
-            }
-            console.log('reverse:', reverse)
-            if (reverse == str) {
+         function palindrome(str) {
+               let reverse = "";
+               for(let i = str.length-1;i>=0;i--){
+                    reverse += str[i];
+               }
+               console.log('reverse:', reverse)
+               if(reverse == str){
                 return true;
+               }
+               else{
+                return  false;
+               }
             }
-            else {
-                return false;
-            }
-        }
     </script>
 </body>
 
